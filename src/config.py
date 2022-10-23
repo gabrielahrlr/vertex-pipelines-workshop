@@ -1,0 +1,1 @@
+config={"PROJECT_ID": "vertex-ai-workshop-2022", "REGION": "us-central1", "ID": "ty8", "BUCKET_NAME": "vertex-ai-workshop-2022-ty8-bucket", "GCS_DATA_URI": "gs://vertex-ai-workshop-2022-ty8-bucket/data/fuel_data.csv", "BQ_DATASET_URI": "bq://vertex-ai-workshop-2022.fuel_dataset.main"}

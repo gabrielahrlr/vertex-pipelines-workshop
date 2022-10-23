@@ -1,0 +1,6 @@
+src/config
+data/
+output_facets_dive.html
+output_facets_overview.html
+*.yml
+*.json
