@@ -25,7 +25,8 @@ The KubeFlow Compoenents are [documented here](https://www.kubeflow.org/docs/com
   gcloud services enable run.googleapis.com
   gcloud services enable cloudbuild.googleapis.com
   gcloud services enable bigquery.googleapis.com
-  
+  gcloud services enable artifactregistry.googleapis.com
+  gcloud services enable cloudbuild.googleapis.com
   
   # Run the following command to grant the Compute Engine default service account access to read and write pipeline artifacts in Google Cloud Storage.
   PROJECT_ID=$(gcloud config get-value project)

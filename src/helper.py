@@ -179,9 +179,9 @@ def upload_pipeline(
     blob.upload_from_filename(package_path)
     
     
-def get_service_account():
-    # Todo: use python client instead.
-    service_account = !gcloud iam service-accounts list --filter="Compute Engine default service account"
-    service_account = np.array(service_account[1].split())[5]
-    SERVICE_ACCOUNT = f"{service_account}"
-    return SERVICE_ACCOUNT
+# def get_service_account():
+#     # Todo: use python client instead.
+#     service_account = !gcloud iam service-accounts list --filter="Compute Engine default service account"
+#     service_account = np.array(service_account[1].split())[5]
+#     SERVICE_ACCOUNT = f"{service_account}"
+#     return SERVICE_ACCOUNT
