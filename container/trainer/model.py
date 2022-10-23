@@ -33,11 +33,9 @@ def build_and_compile_model(norm):
         ])
         model.compile(loss='mean_absolute_error', optimizer=tf.keras.optimizers.Adam(0.001))
         return model
-    
 
-def train_model(params):
-    raw_dataset = download_table(params['data-dir'])
-    raw_dataset.rename(columns = {
+def transform_data(df):
+    df.rename(columns = {
         'mpg':'MPG',
         'cyl':'Cylinders',
         'dis':'Displacement',
@@ -48,16 +46,24 @@ def train_model(params):
         'origin': 'Origin'}, inplace = True)
 
     # Get data in shape
-    dataset = raw_dataset.copy()
-    dataset.tail()
-    dataset = dataset.dropna()
-    dataset['Origin'] = dataset['Origin'].map({1: 'USA', 2: 'Europe', 3: 'Japan'})
-    dataset = pd.get_dummies(dataset, columns=['Origin'], prefix='', prefix_sep='')
-    train_dataset = dataset.sample(frac=0.8, random_state=0)
-    test_dataset = dataset.drop(train_dataset.index)
+    df = df.copy()
+    df.tail()
+    df = df.dropna()
+    df['Origin'] = df['Origin'].map({1: 'USA', 2: 'Europe', 3: 'Japan'})
+    df = pd.get_dummies(df, columns=['Origin'], prefix='', prefix_sep='')
+    
+
+def train_model(params):
+    train_dataset = download_table(params['train-data-dir'])
+    test_dataset = download_table(params['val-data-dir'])
+    
+    train_dataset = transform_data(df=train_dataset)
+    test_dataset = transform_data(df=test_dataset)
+    
     train_features = train_dataset.copy()
-    test_features = test_dataset.copy()
     train_labels = train_features.pop('MPG')
+    
+    test_features = test_dataset.copy()
     test_labels = test_features.pop('MPG')
 
     # Create model
