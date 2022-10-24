@@ -1,6 +1,7 @@
 
 from google.cloud import bigquery
 from google.cloud import storage
+import logging
 import numpy as np
 import pandas as pd
 import os
@@ -54,6 +55,9 @@ def transform_data(df):
     
 
 def train_model(params):
+    import logging
+    logging.info(f"Training bq path {params['train-data-dir']}")
+    logging.info(f"Validation bq path {params['val-data-dir']}")
     train_dataset = download_table(params['train-data-dir'])
     test_dataset = download_table(params['val-data-dir'])
     

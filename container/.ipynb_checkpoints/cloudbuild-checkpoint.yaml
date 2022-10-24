@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/vertex-ai-workshop-2022/fuel-regression/fuel-regression:latest', '.' ]
+images: 
+- 'us-central1-docker.pkg.dev/vertex-ai-workshop-2022/fuel-regression/fuel-regression:latest'
